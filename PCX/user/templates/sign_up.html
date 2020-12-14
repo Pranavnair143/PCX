@@ -1,0 +1,32 @@
+{% extends 'user_base.html' %}
+
+{% block body %}
+<div class='container' style="background-color:#272121;top:20%;left:10%;position: absolute;border:1px solid rgba(56, 255, 48, 0.87);border-radius: 20px;">
+    <p style='color:rgba(56, 255, 48, 0.87);text-align: center;font-size: 40px;'>SignUp</p>
+    <form action="/signup/" style='padding:0 30%;' method='POST'>
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% for i in form %}
+        <div class='form-group'>
+            <div class='row'>
+                <h6 style='color:rgba(56, 255, 48, 0.87)'>{{ i.label_tag }}</h6>
+            </div>
+            <div class='row'>
+                {{ i }}
+            </div>
+        </div>
+        {% endfor %}
+        <div class='form-group' style='margin-top: 25px;'>
+            <div class='row'>
+                <button type="submit" id='loginp_btn' class="btn btn-primary btn-block" value='Login'>Sign Up</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,420 @@
+/*------General---------------------*/
+*{
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    text-decoration: none;
+}
+
+section{
+    background-color: #272121;
+    padding:2%;
+}
+
+body{
+    position:relative;
+}
+#font_color{
+    color: rgba(56, 255, 48, 0.87);
+}
+
+
+/*--------------BTN------------------------*/
+#menu_{
+    font-size: 450%;
+    cursor:pointer;
+    color: rgba(56, 255, 48, 0.87);
+}
+#wish_list,#cart_icon{
+    font-size: 250%;
+    color:rgba(56, 255, 48, 0.87);
+    margin-top: 10px;
+}
+#search_btn{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 0;
+    color: #000;
+    background-color: rgba(56, 255, 48, 0.87);
+}
+#login_btn{
+    margin-top: 10px;
+    color: rgba(56, 255, 48, 0.87);
+    border-color: rgba(56, 255, 48, 0.87);
+}
+/*--------------ICO---------------------*/
+
+#lappy_{
+    
+}
+
+
+
+
+
+
+
+/*--------------MENU---------------------*/
+
+#und_l{
+    border-top: 1px solid rgba(56, 255, 48, 0.87);
+}
+#menu_open{
+    background-color: #000;
+    
+}
+.nav-link{
+    color: rgba(56, 255, 48, 0.87);
+}
+
+
+/*--------------HEADER---------------------*/
+
+
+header{
+    background-color: #000;
+}
+.title_ h2{
+    margin-top: 10px;
+    color: rgba(56, 255, 48, 0.87);
+}
+#usr{
+    width:100%;
+    margin-top: 10px;
+    border-radius: 0;
+}
+.s div{padding: 0 0;}
+
+/*--------------AD---------------------*/
+#ad_title{
+    color: aliceblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*--------------sec1---------------------*/
+#h1_green{
+    color:rgba(56, 255, 48, 0.87);
+    text-align: center;
+}
+#pro_pic{
+    padding: 3%;
+}
+.rate_1{
+    color: rgba(56, 255, 48, 0.87);
+    padding-left: 10px;
+}
+#rate_1{color: rgba(56, 255, 48, 0.87);}
+#rate_2{color: #2c38c9;}
+.mo_name{
+    color: aliceblue;
+    padding-left: 10px;
+}
+#price_bar_g{
+    margin: 10px 0;
+    border-top: 1px solid rgba(56, 255, 48, 0.87);
+}
+#pane_{
+    padding: 10%;
+    border:1px solid rgba(56, 255, 48, 0.87);
+    border-radius: 20px;
+}
+
+/*--------------sec2---------------------*/
+#pane_1{
+    padding: 10%;
+    border:1px solid #2c38c9;
+    border-radius: 20px;
+}
+#sec2{
+    background-color: #272121;
+}
+#h1_blue{
+    color:#2c38c9;
+    text-align: center;
+}
+#price_bar_b{
+    margin: 10px 0;
+    border-top: 1px solid #2c38c9;
+}
+
+
+/*--------------sec3---------------------*/
+
+#h1_saff{
+    color:#f78500;
+    text-align: center;
+    margin: 10px 0;
+}
+.mr_1{
+    margin:10px 0;
+}
+
+#mi_flex{
+    margin-top: 120px;
+}
+
+#mi_intro{
+    text-align: center;
+    color: #0dad00;
+    margin: 30px 0;
+}
+#pane_2{
+    padding: 10%;
+    border:1px solid #2c38c9;
+    border-radius: 20px;
+}
+#mi_logo{
+    width: 30%;
+    float:right; 
+}
+#com_logo{
+    margin:20px 0;
+    color: rgba(56, 255, 48, 0.87);
+}
+
+/*--------------------------------------Product page-----------------------------------------------------------*/
+
+#prod_page{
+    color:aliceblue;
+}
+
+/*------------------------Star Rating---------------------------------*/
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+/*------------------------END---------------------------------*/
+
+body {
+    background: #222225;
+    color: white
+}
+
+h1,
+p {
+    text-align: center
+}
+
+h1 {
+    margin-top: 150px
+}
+
+p {
+    font-size: 1.2rem
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 14px
+    }
+
+    p {
+        font-size: 12px
+    }
+}
+
+/*--------------pro_intro---------------------*/
+
+#pro_title{
+    color:rgba(56, 255, 48, 0.87);
+}
+
+
+#pro_intro{
+    position: relative;
+    padding-top:0; 
+}
+
+
+
+.ppm2 {
+    font-size: 60px;
+}
+
+#pro_rate {
+    margin-left: 20px;
+    font-size: 60px;
+}
+
+#dec_rate {
+    margin-top: 40px;
+    margin-left: 5px;
+}
+
+.ppm3 {
+    font-size: 80px;
+}
+
+
+
+#nav_btn a:link,
+#nav_btn a::active{
+    border-color: rgba(56, 255, 48, 0.87);
+}
+#nav_btn a:hover,
+#nav_btn a:visited{
+    background-color: rgba(56, 255, 48, 0.87);
+}
+
+#scr_nav {
+    position: fixed;
+    width:auto;
+}
+
+#pro_fix {
+}
+
+
+#scr_link:hover,
+#scr_link:visited{
+    color:rgba(56, 255, 48, 0.87);
+}
+
+
+
+
+
+
+
+#scr_half {
+    margin-top: -486px;
+}
+
+#buy_btn {
+    background-color: rgba(56, 255, 48, 0.87);
+    border-radius: 20px;
+}
+
+#atc_btn{
+    background-color: rgba(56, 255, 48, 0.87);
+    border-radius: 20px;
+    color: #272121;
+}
+#t_attr {
+    color:rgba(56, 255, 48, 0.87);
+}
+
+
+
+#w_heart {
+    color:red;
+    font-size: 40px;
+    margin-right: 20px;
+}
+
+
+
+#cus_inp {
+    border:2px solid rgba(56, 255, 48, 0.87);
+    padding: 30px;
+}
+
+#sub_btn {
+    color:rgba(56, 255, 48, 0.87);
+    border:2px solid rgba(56, 255, 48, 0.87);
+}
+
+#log_font {
+    color:rgba(56, 255, 48, 0.87);
+}
+
+#loginp_btn {
+    background-color: rgba(56, 255, 48, 0.87);
+}
+
+/*--------------googlebtn---------------------*/
+
+
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+
+.loginBtn--google {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+.loginBtn--google:before {
+  border-right: #BB3F30 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #E74B37;
+}
+
+#myInput{
+    padding: 20px;
+    margin-top: -6px;
+    border: 0;
+    border-radius: 0;
+    background: #f1f1f1;
+}

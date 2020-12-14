@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<section>
+    {% if products %}
+        {% for i in products %}
+        <div class='row'>
+            <p style="color:rgba(56, 255, 48, 0.87);">{{ i.p_brand }} {{ i.p_name }} {{ i.p_rate }}</p>
+        </div>
+        {% endfor %}
+        {% include 'paginator.html' with products=products %}
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="card m-auto">
+                    <div class="card-body mt-2 mb-2">
+                        <h2 class="card-title">
+                            No results
+                        </h2>
+                        <p class="card-text">There were no results matching your search: "{{query}}".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif%}
+</section>
+
+{% endblock %}

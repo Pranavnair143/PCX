@@ -1,0 +1,15 @@
+{% extends 'user_base.html' %}
+
+{% block body %}
+<div class='container' style="background-color:#272121;top:5%;left:3%;position: absolute;border:1px solid rgba(56, 255, 48, 0.87);border-radius: 20px;">
+    <div class='row'>
+        <h3 style='color:rgba(56, 255, 48, 0.87)' >{{ profile.user.first_name }} {{ profile.user.last_name}}</h3>
+    </div>
+    <div class='row'>
+        <a href="{% url 'upd_profile' %}">Update Profile</a><br>
+        <a href='#'>Orders</a><br>
+        <a href='#'>Wishlist</a><br>
+        <a href='#'>Change Password</a><br>
+    </div>
+</div>
+{% endblock %}

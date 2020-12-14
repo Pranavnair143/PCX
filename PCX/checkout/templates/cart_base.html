@@ -1,0 +1,67 @@
+{% load static %}
+{% load socialaccount %}
+<DOCTYPE! html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel='stylesheet' type="text/css" href="{% static 'css/style-bs.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    </head>
+    <body>
+        <div class='row top_bar' style='background-color: black;'>
+            <div class='col-sm-1'>
+                <a data-toggle="collapse" data-target="#menu_open"><ion-icon id='menu_' name="reorder-three"></ion-icon></a>
+            </div>
+            <div class='col-sm-auto title_'>
+                <h2>PCX-Zone</h2>
+            </div>
+            <div class='col-sm-6'>
+                <div class='row s'>
+                    <div class='col-sm-10'>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                    <div class='col-sm-2'>
+                        <button type="button" id='search_btn' class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-1'>
+                {% if user.id is None %}
+                <a href="{% url 'login' %}"><button type="button" id='login_btn' class="btn btn-outline-primary">Log In</button></a>
+                {% else %}
+                <a href="{% url 'u_profile' %}"><ion-icon style='font-size:250%;color:rgba(56, 255, 48, 0.87);margin-top: 10px;' name="person-circle"></ion-icon></a>
+                <a href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+            </div>
+            <div class='col-sm-1'>
+                <a href="{% url 'show_wishlist' %}"><ion-icon id='wish_list' name="heart"></ion-icon></ad>
+            </div>
+            <div class='col-sm-1'>
+                <a href='{% url 'show_cart' %}'><ion-icon id='cart_icon' name="cart-outline"></ion-icon></a>
+            </div>
+        </div>
+        <ul class="nav-justified collapse" id="menu_open" style='margin-bottom: -2px;'>
+          <li class="nav-item" id='und_l'>
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item" id='und_l'>
+            <a class="nav-link" href="#">Orders</a>
+          </li>
+          <li class="nav-item" id='und_l'>
+            <a class="nav-link" href="#">Track Delivery</a>
+          </li>
+          <li class="nav-item" id='und_l'>
+            <a class="nav-link" href="#">FAQ and forums</a>
+          </li>
+        </ul>
+        {% block content %}
+        {% endblock %}
+    </body>
+    <script src="{% static 'scripts/jscript-bs.js' %}"></script>
+</html>

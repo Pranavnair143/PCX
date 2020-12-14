@@ -1,0 +1,20 @@
+{% extends 'cart_base.html' %}
+
+{% block content %}
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-3'>
+            <p id='font_color'>{{ o_code }}</p>
+        </div>
+        <div class='col-sm-6'>
+            {% for i in o_sum %}
+            <p id='font_color'>{{ i.product.p_name }} {{ i.price }} Qty:{{ i.qnty }}</p><br>
+            <p id='font_color'>Amount:{{ i.amount }}</p>
+            {% endfor %}
+        </div>
+        <div class='col-sm-3'>
+            <p id='font_color'>{{ total }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

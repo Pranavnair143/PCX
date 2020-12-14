@@ -1,0 +1,17 @@
+<div class="d-flex flex-column m-auto pagination mt-5">
+    <nav aria-label="Page navigation">
+        <ul class="pagination pg-grey justify-content-center">
+            {% if products.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?{% if ordering %}ordering={{ o }}&{% endif %}{% if query %}search_p={{query}}&{% endif %}page={{ products.next_page_number }}">&laquo; Previous</a>
+                </li>
+            {% endif %}
+
+            {% if products.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?{% if ordering %}ordering={{ o }}&{% endif %}{% if query %}search_p={{query}}&{% endif %}page={{ products.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

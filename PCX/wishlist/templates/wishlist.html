@@ -1,0 +1,15 @@
+{% extends 'wbase.html' %}
+
+{% block content %}
+<section>
+    {% for i in w_list %}
+    <div class='row'>
+        <div class='col-sm-6'>
+            <p id='font_color'>{{ i.product.p_name }}</p><br>
+            <p id='font_color'>{{ i.product.p_rate }}</p><br>
+            <p id='font_color'>Added on: {{ i.created_at }}</p><br>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

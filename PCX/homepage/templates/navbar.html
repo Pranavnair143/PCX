@@ -1,0 +1,65 @@
+<div class='row top_bar' style='background-color: black;'>
+    <div class='col-sm-1'>
+        <a data-toggle="collapse" data-target="#menu_open"><ion-icon id='menu_' name="reorder-three"></ion-icon></a>
+    </div>
+    <div class='col-sm-auto title_'>
+        <h2>PCX-Zone</h2>
+    </div>
+    <div class='col-sm-6'>
+        <div class='row'>
+            <div class='col-sm-10'>
+                <form action='/search/' method='GET' id='search_form'>
+                    <input type="text" name='search_p' class="form-control" id="usr" value="{{ query }}">
+                </form>
+            </div>
+            <div class='col-sm-2'>
+                <button type="submit" form='search_form' id='search_btn' class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-1'>
+        {% if user.id is None %}
+        <a href="{% url 'login' %}"><button type="button" id='login_btn' class="btn btn-outline-primary">Log In</button></a>
+        {% else %}
+        <a href="{% url 'u_profile' %}"><ion-icon style='font-size:250%;color:rgba(56, 255, 48, 0.87);margin-top: 10px;' name="person-circle"></ion-icon></a>
+        <a href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+    </div>
+    <div class='col-sm-1'>
+        <a href="{% url 'show_wishlist' %}"><ion-icon id='wish_list' name="heart"></ion-icon></ad>
+    </div>
+    <div class='col-sm-1'>
+        <a href='{% url 'show_cart' %}'><ion-icon id='cart_icon' name="cart-outline"></ion-icon></a>
+    </div>
+</div>
+<ul class="nav-justified collapse" id="menu_open" style='margin-bottom: -2px;'>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">Home</a>
+  </li>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">Orders</a>
+  </li>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">Track Delivery</a>
+  </li>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">FAQ and forums</a>
+  </li>
+</ul>
+<section>
+    <!--<div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort by
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><input type="radio" name="ordering" value="p_rate"><label>Price:Low to High</label></li> 
+            <li><input type="radio" name="ordering" value="-p_rate"><label>Price:High to Low</label></li> 
+            <li><input type="radio" name="ordering" value="averagereview"><label>Avg. Customer Review</label></li> 
+        </ul>
+        <button type='submit' class="btn btn-primary">Sort</button>
+    </div>-->
+    <div class='container'>
+        <a href="?ordering=p_rate&{% if page %}page={{ page }}&{% endif %}{% if query %}search_p={{query}}{% endif %}">Price:Low to High</a>
+        <a href="?ordering=-p_rate&{% if page %}page={{ page }}&{% endif %}{% if query %}search_p={{query}}{% endif %}">Price:High to Low</a>
+        <a href="?ordering=averagereview&{% if page %}page={{ page }}&{% endif %}{% if query %}search_p={{query}}{% endif %}">Avg. Customer Review</a>
+    </div>
+</section>

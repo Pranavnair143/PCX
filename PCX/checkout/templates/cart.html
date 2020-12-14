@@ -1,0 +1,33 @@
+{% extends 'cart_base.html' %}
+
+{% block content %}
+<section>
+    {% for item in cart %}
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-6'>
+                <p id='font_color'>{{ item.product.p_name }}</p>
+            </div>
+            <div class='col-sm-2'>
+                <p id='font_color'>{{ item.qnty }}</p>
+            </div>
+            <div class='col-sm-1'>
+                <p id='font_color'>{{ item.product.p_rate }}</p>
+            </div>
+            <div class='col-sm-1'>
+                <p id='font_color'>{{ item.amount }}</p>
+            </div>
+            <div class='col-sm-2'>
+                <a href="/checkout/remove/{{ item.id }}">Remove</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class='container'>
+        <p>Total:{{ total }}</p>
+    </div>
+    <div class='container'>
+        <a href='{% url 'order_cart' %}'>Place Order</a>
+    </div>
+</section>
+{% endblock %}
