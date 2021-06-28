@@ -1,0 +1,44 @@
+{% extends 'search_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    {% if revs %}
+        <div class='row'>
+            <h2 id='font_color'>{{ customer.user.first_name }}'s Reviews ({{ revs.count }})</h2>
+        </div>
+        {% for item in revs %}
+            <div class='row' style='border-top: 1px solid aliceblue;border-bottom: 1px solid aliceblue;'>
+                <div class='col-sm-3'>
+                    <img class='card-img img-fluid' src="{% static 'images/laptop.png' %}" style='padding:10px;'>
+                </div>
+                <div class='col-sm-5'>
+                    <div class='row'>
+                        <h2 id='font_color'>{{ item.product.p_brand }} {{ item.product.p_name }}
+                            {% if item.product.averagereview %}
+                                {% if item.product.averagereview >= 3 %}
+                                    <span class="label label-success" style="font-size: 11px;">☆{{ item.product.averagereview|floatformat:1 }}</span>
+                                {% elif item.product.averagereview >= 2 %}
+                                    <span class="label label-warning" style="font-size: 11px;">☆{{ item.product.averagereview|floatformat:1 }}</span>
+                                {% else %}
+                                    <span class="label label-danger" style="font-size: 11px;">☆{{ item.product.averagereview|floatformat:1 }}</span>
+                                {% endif %}
+                            {% endif %}</h2>
+                    </div>
+                    <div class='row'>   
+                        <h3 id='white_font'>☆ {{ item.rate }}</h3>
+                    </div>
+                    <div class='row'>
+                        <h3 id='white_font'>{{ item.cus_rev }}</h3>
+                    </div>
+                </div>
+                <div class='col-sm-4'>
+                    <a href="/user/my_reviews/remove/{{ item.id }}" class="btn btn-danger" role="button" style='margin-top: 50px;margin-left: 20px;'>Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4 id='font_color' style='text-align: center;'>You have not reviewed any product</h4>
+    {% endif %}
+</section>
+{% endblock %}

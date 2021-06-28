@@ -1,0 +1,51 @@
+{% extends 'search_base.html' %}
+
+{% block content %}
+<form action="" style='padding:0 30%;' method='POST'>
+    {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class='form-group'>
+        <div class='row'>
+            <label for='address' id='log_font'>Address:</label>
+        </div>
+        <div class='row'>
+            <input type="text" value="{{ u_profile.address }}" name="address" class='form-control'>
+        </div>
+    </div>
+    <div class='form-group'>
+        <div class='row'>
+            <label for='city' id='log_font'></label>
+        </div>
+        <div class='row'>
+            <input type="text" value="{{ u_profile.city }}" name="city" class='form-control'>
+        </div>
+    </div>
+    <div class='form-group'>
+        <div class='row'>
+            <label for='district' id='log_font'>District:</label>
+        </div>
+        <div class='row'>
+            <input type="text" value="{{ u_profile.district }}" name="district" class='form-control'>
+        </div>
+    </div>
+    <div class='form-group'>
+        <div class='row'>
+            <label for='state' id='log_font'>State:</label>
+        </div>
+        <div class='row'>
+            <input type="text" value="{{ u_profile.state }}" name="state" class='form-control'>
+        </div>
+    </div>
+    <div class='form-group' style='margin-top: 25px;'>
+        <div class='row'>
+            <button type="submit" id='loginp_btn' class="btn btn-primary btn-block" value='Login'>Order</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

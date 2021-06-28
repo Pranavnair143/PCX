@@ -1,0 +1,35 @@
+{% extends 'search_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    {% if u_orders %}
+        <div class='row'>
+            <h2 id='font_color'>{{ customer.user.first_name }}'s Orders ({{ u_orders.count }})</h2>
+        </div>
+        {% for item in u_orders %}
+            <div class='row' style='border-top: 1px solid aliceblue;border-bottom: 1px solid aliceblue;'>
+                <div class='col-sm-3'>
+                    <img class='card-img img-fluid' src="{% static 'images/laptop.png' %}" style='padding:10px;'>
+                </div>
+                <div class='col-sm-9'>
+                    <div class='row'>
+                        <h2 id='font_color'>{{ item.product.p_brand }} {{ item.product.p_name }}</h2>
+                    </div>
+                    <div class='row'>   
+                        <h3 id='white_font'>Ordered on :{{ item.order.create_at }}</h3>
+                    </div>
+                    <div class='row'>
+                        <h3 id='white_font'>Estimated delivery date is {{ item.est_dly }}</h3>
+                    </div>
+                    <div class='row'>
+                        <h3 id='white_font'>Order Code: <span id='font_color'>{{ item.order.code }}</span></h3>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4 id='font_color' style='text-align: center;'>You have not reviewed any product</h4>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'search_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class='row'>
+    <h2 id='font_color' style='margin-left: 20px;'>Your order has been placed</h2>
+</div>
+{% for item in o_sum %}
+    <div class='row' style='border-top: 1px solid aliceblue;border-bottom: 1px solid aliceblue;'>
+        <div class='col-sm-3'>
+            <img class='card-img img-fluid' src="{% static 'images/laptop.png' %}" style='padding:10px;'>
+        </div>
+        <div class='col-sm-9'>
+            <div class='row'>
+                <h2 id='font_color'>{{ item.product.p_brand }} {{ item.product.p_name }}</h2>
+            </div>
+            <div class='row'>
+                <h4 id='white_font'>Estimated delivery would be on <span id='font_color'>{{ item.est_dly }}</span></h4>
+            </div>
+            <div class='row'><h5 id='font_color'>Your order code is {{ item.order.code }}</h5></div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

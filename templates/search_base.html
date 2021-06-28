@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fil %}
+
+{% block body %}
+<div class='row top_bar' style='background-color: black;'>
+    <div class='col-sm-1'>
+        <a data-toggle="collapse" data-target="#menu_open"><ion-icon id='menu_' name="reorder-three"></ion-icon></a>
+    </div>
+    <div class='col-sm-auto title_'>
+        <a href='/' style='text-decoration: none;'><h2>PCX-Zone</h2></a>
+    </div>
+    <div class='col-sm-6'>
+        <div class='row'>
+            <div class='col-sm-10'>
+                <form action="{% url 'search:p_search' %}" method="GET" value="{{ request.GET.search }}" id="search_form">
+                    <input type="text" value='{{ request.GET.search }}' name='search' class="form-control" id="usr">
+                </form>
+            </div>
+            <div class='col-sm-2'>
+                <input type="submit" name="submit" form='search_form' id='search_btn' value="Search">
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-1'>
+        {% if user.id is None %}
+            <a href="{% url 'login' %}"><button type="button" id='login_btn' class="btn btn-outline-primary">Log In</button></a>
+        {% else %}
+            <a href="{% url 'profile:u_profile' %}"><ion-icon style='font-size:250%;color:rgba(56, 255, 48, 0.87);margin-top: 10px;' name="person-circle"></ion-icon></a>
+        {% endif %}
+    </div>
+    <div class='col-sm-1'>
+        <a href="{% url 'wlist:show_wlist' %}"><ion-icon id='wish_list' name="heart"></ion-icon></ad>
+    </div>
+    <div class='col-sm-1'>
+        <a href="{% url 'show_cart' %}"><ion-icon id='cart_icon' name="cart-outline"></ion-icon></a>
+    </div>
+</div>
+<ul class="nav-justified collapse" id="menu_open" style='margin-bottom: -2px;'>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">Home</a>
+  </li>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">Orders</a>
+  </li>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">Track Delivery</a>
+  </li>
+  <li class="nav-item" id='und_l'>
+    <a class="nav-link" href="#">FAQ and forums</a>
+  </li>
+</ul>
+{% if messages %}
+    <div class='container-fluid'>
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert" style='margin-bottom: 0px;margin-top:5px; '>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if submitbutton == 'Search' and request.GET.search != "" %}
+    <section style={background-color: #272121;}>
+        {% if p_obj %}
+            <div class='row'>
+                <div class='col-sm-3'>
+                    <div class='row'>
+                        <h3 id='font_color'>Sort By</h3>
+                    </div>
+                    <div class='row'>
+                        <div class="btn-group-vertical">
+                            <a class="btn btn-success" role="button" href="{% relative_url 'p_rate' 'order' request.GET.urlencode %}">Price:Low to High</a>
+                            <a class="btn btn-success" role="button" href="{% relative_url '-p_rate' 'order' request.GET.urlencode %}">Price:High to Low</a>
+                            <a class="btn btn-success" role="button" href="{% relative_url '-averagereview' 'order' request.GET.urlencode %}">Avg. Customer Review</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm-9'>
+                    {% for i in p_obj %}
+                        <div class='row' style='border-top: 1px solid aliceblue;border-bottom: 1px solid aliceblue;padding:2% 0;'>
+                            <div class='col-sm-3'>
+                                <a href='/product/addon/{{ i.id }}' id='w_heart'>
+                                {% if i.id in p_ids %}
+                                    <ion-icon name="heart" style='font-size: 30px;float: right;'></ion-icon>
+                                {% else %}
+                                    <ion-icon name="heart-outline" style='font-size: 30px;float: right;'></ion-icon>
+                                {% endif %}
+                                </a>
+                            </div>
+                            <a href='/product/{{ i.id }}' style='text-decoration: none;'>
+                                <div class='row'>
+                                    <div class='col-sm-3'>
+                                        <img class='img-fluid' src="{% static 'images/laptop2.png' %}" style='padding:10px;'>
+                                    </div>
+                                    <div class='col-sm-9'>
+                                        <ul style='list-style-type: none;margin-left:20px;'>
+                                            <li>
+                                                <h3 id='white_font'>{{ i.p_brand }} {{ i.p_name }} 
+                                                    {% if i.averagereview %}
+                                                        {% if i.averagereview >= 3 %}
+                                                            <span class="label label-success" style="font-size: 11px;">☆{{ i.averagereview|floatformat:1 }}</span>
+                                                        {% elif i.averagereview >= 2 %}
+                                                            <span class="label label-warning" style="font-size: 11px;">☆{{ i.averagereview|floatformat:1 }}</span>
+                                                        {% else %}
+                                                            <span class="label label-danger" style="font-size: 11px;">☆{{ i.averagereview|floatformat:1 }}</span>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </h3>
+                                                <h5 id='white_font'>{{ i.typ }}</h5>
+                                                <ul id='specs_short'>
+                                                    <li id='white_font'>{{ i.ram }} GB</li>
+                                                    <li id='white_font'>{{ i.memory }}</li>
+                                                    <li id='white_font'>{{ i.cpu }}</li>
+                                                    <li id='white_font'>{{ i.screen_size }} inches</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <h3 id='pro_rate' style='font-size: 40px;float:left;color: rgba(56, 255, 48, 0.87);'>Rs.{{ i.int_rate }}</h3>
+                                        <h5 id='dec_rate' style='font-size: 20px;margin-top: 45px; color:rgba(56, 255, 48, 0.87);'>.{{ i.dec_rate }}</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    {% include 'paginator.html' with p_obj=p_obj %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="card m-auto">
+                        <div class="card-body mt-2 mb-2">
+                            <h2 class="card-title">
+                                No results
+                            </h2>
+                            <p class="card-text">There were no results matching your search: "{{query}}".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif%}
+    </section>
+{% else %}
+    {% block content %}
+    {% endblock %}
+{% endif %}
+{% endblock %}

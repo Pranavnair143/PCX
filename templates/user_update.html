@@ -1,0 +1,12 @@
+{% extends 'search_base.html' %}
+
+{% block content %}
+<div class='container' style="background-color:#272121;top:10%;left:3%;position: absolute;border:1px solid rgba(56, 255, 48, 0.87);border-radius: 20px;">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit" id='loginp_btn' class="btn btn-primary btn-block">Update</button>
+    </form>
+</div>
+{% endblock %}

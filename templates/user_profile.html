@@ -1,0 +1,33 @@
+{% extends 'search_base.html' %}
+
+{% block content %}
+<div class='container' style="background-color:#272121;top:10%;left:10%;position: absolute;border:1px solid rgba(56, 255, 48, 0.87);border-radius: 20px;">
+    <div class='row' style='padding-top:2%;color:rgba(56, 255, 48, 0.87);'>
+        <div class='col-sm-5'>
+        </div>
+        <div class='col-sm-7'>
+            <ion-icon name="person-circle" style='font-size: 200px;'></ion-icon>
+        </div>
+    </div>
+    <div class='row' style='padding-bottom:5%;'>
+        <div class='col-sm-5'>
+        </div>
+        <div class='col-sm-7'>
+            <h3 style='color:rgba(56, 255, 48, 0.87);margin-left: 25px;'>{{ profile.user.first_name }} {{ profile.user.last_name}}</h3>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="list-group" style='width: 100%;padding:1% 3%;'>
+          <a href="{% url 'profile:u_orders' %}" class="list-group-item list-group-item-action list-group-item-success">My Orders{% if u_order %}<span class="badge badge-primary badge-pill">{{ u_order.count }}</span>{% endif %}</a>
+          <a href="{% url 'wlist:show_wlist' %}" class="list-group-item list-group-item-action list-group-item-success">My Wishlist{% if u_wlist %}<span class="badge badge-primary badge-pill">{{ u_wlist.count }}</span>{% endif %}</a>
+          <a href="{% url 'show_cart' %}" class="list-group-item list-group-item-action list-group-item-success">My Cart{% if u_cart %}<span class="badge badge-primary badge-pill">{{ u_cart.count }}</span>{% endif %}</a>
+            <a href="{% url 'profile:u_reviews' %}" class="list-group-item list-group-item-action list-group-item-success">My Reviews{% if u_review %}<span class="badge badge-primary badge-pill">{{ u_review.count }}</span>{% endif %}</a>
+        </div>
+        <div class="list-group" style='width: 100%;padding:2% 3%;'>
+          <a href="{% url 'profile:upd_profile' %}" class="list-group-item list-group-item-action list-group-item-success">Update Profile</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-success">Change Password</a>
+          <a href="{% url 'logout' %}" class="list-group-item list-group-item-action list-group-item-danger">Log Out</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
